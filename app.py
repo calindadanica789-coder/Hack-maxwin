@@ -36,5 +36,10 @@ def activate():
         f.write(json.dumps(data, ensure_ascii=False) + "\n")
     return redirect(TARGET_URL)
 
+# health endpoint for uptime checks
+@app.route("/health", methods=["GET"])
+def health():
+    return "ok", 200
+
 if __name__ == "__main__":
     app.run(debug=True)
