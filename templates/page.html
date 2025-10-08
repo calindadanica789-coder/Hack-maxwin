@@ -8,158 +8,126 @@
   <style>
     body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:#f8fafc; }
     .hero-bg { background: linear-gradient(135deg,#064e3b 0%,#047857 60%); color: white; }
- /* hacker-style logo */
-.logo-wrap { width:48px; height:48px; display:inline-block; border-radius:10px; background:rgba(255,255,255,0.06); padding:6px; }
-.logo-glow svg { filter: drop-shadow(0 6px 12px rgba(4,120,87,0.18)); }
-.logo-eyes { transition: fill .25s ease-in-out; }
-.logo-wrap:hover .logo-eyes { fill: #10b981; transform: translateY(-1px); }
-</style>
+    .logo-wrap { width:48px; height:48px; display:inline-block; border-radius:10px; background:rgba(255,255,255,0.06); padding:6px; }
+    .site-logo { width:120px; height:120px; border-radius:9999px; object-fit:cover; display:block; margin:0 auto; }
+  </style>
 </head>
 <body class="min-h-screen">
   <header class="hero-bg py-6">
-    <div class="max-w-4xl mx-auto px-4 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
-       <!-- replace old small SVG with image logo -->
-<a href="/" class="inline-flex items-center gap-3" title="Hack-Maxwin">
-  <img src="{{ url_for('static', filename='logo_circle.png') }}" alt="Hack-Maxwin" class="site-logo" />
-</a>
-
-
-        </div>
-        <div>
-          <div class="text-lg font-semibold">Hack-Maxwin</div>
-          <div class="text-sm text-white/80">Alat aktivasi cepat</div>
-        </div>
+        <a href="/" class="inline-flex items-center gap-3" title="Hack-Maxwin">
+          <img src="{{ url_for('static', filename='logo_circle.png') }}" alt="Hack-Maxwin" class="site-logo" />
+        </a>
+      </div>
+      <div class="text-right">
+        <div class="text-lg font-semibold">Hack-Maxwin</div>
+        <div class="text-sm text-white/80">Alat aktivasi cepat</div>
       </div>
     </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-4 mt-6">
-    <!-- FORM: pilih opsi + provider, lalu submit -->
-<form id="activateForm" method="POST" action="/activate">
-  <div class="mb-4">
-    <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-1">Aktivasi Sekarang — Cepat & Aman</h1>
-    <p class="text-sm text-red-600">Hanya berlaku 1x pemakaian</p>
-  </div>
+  <main class="max-w-6xl mx-auto px-4 -mt-12">
+    <section class="bg-white rounded-2xl shadow-lg p-8">
+      <form id="activateForm" method="POST" action="/activate">
+        <div class="mb-4 text-center">
+          <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-1">Aktivasi Sekarang — Cepat & Aman</h1>
+          <p class="text-sm text-red-600">Hanya berlaku 1x pemakaian</p>
+        </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-    <!-- main options -->
-   <label class="flex items-center gap-3 p-3 border rounded-lg">
-  <input type="radio" name="option" value="freespin" class="h-5 w-5 accent-emerald-600" />
-  <span class="font-medium">Cheat Freespin</span>
-</label>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <!-- main options (radio: hanya 1) -->
+          <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer">
+            <input type="radio" name="option" value="freespin" class="h-5 w-5 accent-emerald-600" />
+            <span class="font-medium">Cheat Freespin</span>
+          </label>
 
-<label class="flex items-center gap-3 p-3 border rounded-lg">
-  <input type="radio" name="option" value="maxwin" class="h-5 w-5 accent-emerald-600" />
-  <span class="font-medium">Cheat Maxwin</span>
-</label>
+          <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer">
+            <input type="radio" name="option" value="maxwin" class="h-5 w-5 accent-emerald-600" />
+            <span class="font-medium">Cheat Maxwin</span>
+          </label>
+        </div>
 
-  </div>
+        <div class="mb-6">
+          <details id="providerDropdown" class="bg-gray-50 border rounded-lg p-3">
+            <summary id="providerSummary" class="cursor-pointer font-medium flex items-center justify-between">
+              <span class="provider-label">Pilih Provider</span>
+              <span id="providerCount" class="text-xs text-gray-500">0 dipilih</span>
+            </summary>
 
-    <div class="mb-4">
-    <details id="providerDropdown" class="mb-2 bg-gray-50 border rounded-lg p-3">
-      <summary id="providerSummary" class="cursor-pointer font-medium flex items-center justify-between">
-        <span class="provider-label">Pilih Provider</span>
-        <span id="providerCount" class="text-xs text-gray-500">0 dipilih</span>
-      </summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="provider" value="Pragmatic Play" /> Pragmatic Play
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="provider" value="PG Soft" /> PG Soft
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="provider" value="Habanero" /> Habanero
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="provider" value="Spade Gaming" /> Spade Gaming
+              </label>
+            </div>
+          </details>
+        </div>
 
-      <div class="mt-2 text-sm text-gray-700 space-y-2">
-        <label class="flex items-center gap-2"><input type="radio" name="provider" value="Pragmatic Play" /> Pragmatic Play</label>
-        <label class="flex items-center gap-2"><input type="radio" name="provider" value="PG Soft" /> PG Soft</label>
-        <label class="flex items-center gap-2"><input type="radio" name="provider" value="Habanero" /> Habanero</label>
-        <label class="flex items-center gap-2"><input type="radio" name="provider" value="Spade Gaming" /> Spade Gaming</label>
-      </div>
-    </details>
-  </div>
-
-  <!-- ACTIONS: submit + direct activation -->
-  <div class="mt-4 flex items-center gap-4">
-    <button id="activateSubmit" type="submit" class="px-5 py-3 bg-emerald-600 text-white rounded-lg" disabled>
-      Lanjutkan
-    </button>
-
-    <a id="fastActivate" href="{{ TARGET_URL }}" target="_blank" rel="noopener"
-       class="inline-flex items-center px-5 py-3 bg-slate-800 text-white rounded-lg">
-      Aktivasi Sekarang
-    </a>
-  </div>
-
-</form> <!-- pastikan ini menutup form yang dibuka sebelumnya -->
-
-<!-- Script: enable submit + provider summary -->
-<script>
-(function(){
-  const form = document.getElementById('activateForm');
-  const submitBtn = document.getElementById('activateSubmit');
-
-  // enable submit only if one of the main options is selected
-  const mainRadios = form.querySelectorAll('input[name="option"]');
-  function updateSubmit() { submitBtn.disabled = !Array.from(mainRadios).some(r=>r.checked); }
-  mainRadios.forEach(r=>r.addEventListener('change', updateSubmit));
-  updateSubmit();
-
-  // provider radios -> update summary
-  const dropdown = document.getElementById('providerDropdown');
-  const summaryLabel = document.querySelector('#providerSummary .provider-label');
-  const providerCount = document.getElementById('providerCount');
-  const providerRadios = form.querySelectorAll('input[name="provider"]');
-
-  function updateProviderSummary(){
-    const checked = Array.from(providerRadios).find(c=>c.checked);
-    if(!checked){
-      summaryLabel.textContent='Pilih Provider';
-      providerCount.textContent='0 dipilih';
-    } else {
-      summaryLabel.textContent = checked.value;
-      providerCount.textContent='1 dipilih';
-      if(dropdown) dropdown.open = false;
-    }
-  }
-  providerRadios.forEach(r=>r.addEventListener('change', updateProviderSummary));
-  updateProviderSummary();
-
-  // close dropdown on outside click
-  document.addEventListener('click', e=>{ if(dropdown && !dropdown.contains(e.target)) dropdown.open=false; });
-
-  // close dropdown when form submits
-  form.addEventListener('submit', ()=>{ if(dropdown) dropdown.open=false; });
-})();
-</script>
-
-
-  <!-- submit: disabled sampai minimal satu option dicentang -->
-    <div class="mt-4">
-    <!-- hanya satu tombol submit, aktif saat pilihan dipilih -->
-    <button id="activateSubmit" type="submit"
-      class="px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg"
-      disabled>Aktivasi Sekarang</button>
-  </div>
-
-</form>
-
-<script>
-  // enable submit only when at least one main option is checked
-  (function(){
-    const form = document.getElementById('activateForm');
-    const submitBtn = document.getElementById('activateSubmit');
-    const mainChecks = form.querySelectorAll('input[name="option"]');
-
-    function updateSubmit() {
-      const any = Array.from(mainChecks).some(c => c.checked);
-      submitBtn.disabled = !any;
-    }
-
-    mainChecks.forEach(c => c.addEventListener('change', updateSubmit));
-    updateSubmit();
-  })();
-</script>
-
+        <!-- single submit button (disabled sampai option + provider terpilih) -->
+        <div class="mt-4">
+          <button id="activateSubmit" type="submit"
+                  class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg disabled:opacity-60"
+                  disabled>
+            Aktivasi Sekarang
+          </button>
+        </div>
+      </form>
+    </section>
 
     <footer class="mt-8 text-sm text-gray-600 text-center">
       © <span id="year"></span> Hack-Maxwin
     </footer>
   </main>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>
+    // behavior: enable submit only when one main option + one provider chosen.
+    (function(){
+      const form = document.getElementById('activateForm');
+      const submitBtn = document.getElementById('activateSubmit');
+      const optionRadios = form.querySelectorAll('input[name="option"]');
+      const providerRadios = form.querySelectorAll('input[name="provider"]');
+      const dropdown = document.getElementById('providerDropdown');
+      const summaryLabel = document.querySelector('#providerSummary .provider-label');
+      const providerCount = document.getElementById('providerCount');
+
+      function updateSubmit(){
+        const optionSelected = Array.from(optionRadios).some(r=>r.checked);
+        const providerSelected = Array.from(providerRadios).some(r=>r.checked);
+        submitBtn.disabled = !(optionSelected && providerSelected);
+      }
+
+      function updateProviderSummary(){
+        const checked = Array.from(providerRadios).find(r=>r.checked);
+        if(!checked){
+          summaryLabel.textContent = 'Pilih Provider';
+          providerCount.textContent = '0 dipilih';
+        } else {
+          summaryLabel.textContent = checked.value;
+          providerCount.textContent = '1 dipilih';
+          if(dropdown) dropdown.open = false;
+        }
+      }
+
+      optionRadios.forEach(r=>r.addEventListener('change', updateSubmit));
+      providerRadios.forEach(r=>r.addEventListener('change', ()=>{ updateProviderSummary(); updateSubmit(); }));
+
+      // close details on outside click
+      document.addEventListener('click', (e)=>{ if(dropdown && !dropdown.contains(e.target)) dropdown.open = false; });
+
+      updateProviderSummary();
+      updateSubmit();
+    })();
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
