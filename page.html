@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hack-Maxwin — Aktivasi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:#f8fafc; }
+    .hero-bg { background: linear-gradient(135deg,#064e3b 0%,#047857 60%); color: white; }
+ /* hacker-style logo */
+.logo-wrap { width:48px; height:48px; display:inline-block; border-radius:10px; background:rgba(255,255,255,0.06); padding:6px; }
+.logo-glow svg { filter: drop-shadow(0 6px 12px rgba(4,120,87,0.18)); }
+.logo-eyes { transition: fill .25s ease-in-out; }
+.logo-wrap:hover .logo-eyes { fill: #10b981; transform: translateY(-1px); }
+</style>
+</head>
+<body class="min-h-screen">
+  <header class="hero-bg py-6">
+    <div class="max-w-4xl mx-auto px-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+       <div class="logo-wrap logo-glow" title="Hack-Maxwin">
+  <!-- Mystique hacker mask / hood SVG -->
+  <svg width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0" stop-color="#06b6d4"/>
+        <stop offset="1" stop-color="#10b981"/>
+      </linearGradient>
+    </defs>
+    <!-- hood -->
+    <path d="M32 6c-8 0-14 6-16 12 0 0-6 10 0 20 4 6 8 10 16 10s12-4 16-10c6-10 0-20 0-20-2-6-8-12-16-12z"
+          fill="#0f172a" stroke="url(#g)" stroke-width="1"/>
+    <!-- mask -->
+    <ellipse cx="32" cy="34" rx="14" ry="8" fill="#071126"/>
+    <!-- left eye -->
+    <path class="logo-eyes" d="M24 32c0 1.2 1.2 2.2 2.6 2.2S29.2 33.2 29.2 32 28 29.8 26.6 29.8 24 30.8 24 32z" fill="#94f9d7"/>
+    <!-- right eye -->
+    <path class="logo-eyes" d="M40 32c0 1.2-1.2 2.2-2.6 2.2S33.2 33.2 33.2 32 34.4 29.8 35.8 29.8 40 30.8 40 32z" fill="#94f9d7"/>
+    <!-- subtle grid lines (matrix vibe) -->
+    <g opacity="0.07" fill="#0ea5a4">
+      <rect x="6" y="52" width="4" height="1.6"/>
+      <rect x="14" y="52" width="2" height="1.6"/>
+      <rect x="44" y="52" width="3" height="1.6"/>
+    </g>
+  </svg>
+</div>
+
+        </div>
+        <div>
+          <div class="text-lg font-semibold">Hack-Maxwin</div>
+          <div class="text-sm text-white/80">Alat aktivasi cepat</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 -mt-12">
+    <section class="bg-white rounded-2xl shadow-lg p-8">
+  <div class="md:flex md:items-start md:gap-8">
+    <div class="md:flex-1">
+      <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-2">Aktivasi Sekarang</h1>
+      <p class="text-sm text-gray-600 mb-4">Hanya berlaku 1x pemakaian</p>
+
+      <form id="activateForm" method="POST" action="/activate" class="mb-4">
+        <!-- MAIN OPTIONS: only one (radio) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer">
+            <input type="radio" name="option" value="freespin" class="h-5 w-5 accent-emerald-600" />
+            <span class="font-medium">Cheat Freespin</span>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer">
+            <input type="radio" name="option" value="maxwin" class="h-5 w-5 accent-emerald-600" />
+            <span class="font-medium">Cheat Maxwin</span>
+          </label>
+        </div>
+
+        <!-- PROVIDER: collapsible, only one (radio) -->
+        <div class="mb-4">
+          <details id="providerDropdown" class="relative">
+            <summary id="providerSummary"
+                     class="cursor-pointer px-4 py-3 border rounded-lg bg-white/60 text-sm font-medium flex items-center justify-between">
+              <span class="provider-label">Pilih Provider</span>
+              <span class="text-xs text-gray-500" id="providerCount">0 dipilih</span>
+            </summary>
+
+            <div class="mt-2 p-3 bg-gray-50 border rounded-lg space-y-2">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="provider" value="Pragmatic Play" class="h-4 w-4 accent-emerald-600"/>
+                <span class="text-sm">Pragmatic Play</span>
+              </label>
+
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="provider" value="PG Soft" class="h-4 w-4 accent-emerald-600"/>
+                <span class="text-sm">PG Soft</span>
+              </label>
+
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="provider" value="Habanero" class="h-4 w-4 accent-emerald-600"/>
+                <span class="text-sm">Habanero</span>
+              </label>
+
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="provider" value="Spade Gaming" class="h-4 w-4 accent-emerald-600"/>
+                <span class="text-sm">Spade Gaming</span>
+              </label>
+            </div>
+          </details>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="mt-4 flex items-center gap-4">
+          <!-- submit akan kirim pilihan ke /activate (server mencatat) -->
+          <button id="activateSubmit" type="submit" class="px-5 py-3 bg-emerald-600 text-white rounded-lg" disabled>
+            Lanjutkan
+          </button>
+
+          <!-- direct activation: membuka TARGET_URL di tab baru -->
+          <a id="fastActivate" href="{{ TARGET_URL }}" target="_blank" rel="noopener"
+             class="inline-flex items-center px-5 py-3 bg-slate-800 text-white rounded-lg">
+            Aktivasi Sekarang
+          </a>
+        </div>
+      </form>
+
+      <div class="mt-4 text-sm text-gray-500">Redirect ke target yang dikunci</div>
+    </div>
+
+    <div class="mt-6 md:mt-0 md:w-56">
+      <div class="bg-gradient-to-tr from-indigo-50 to-white border rounded-lg p-4 text-center">
+        <div class="text-xs text-gray-500">Statistik</div>
+        <div class="text-2xl font-bold text-indigo-600 mt-2">—</div>
+        <div class="text-xs text-gray-500">klik</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JS kecil: enable submit, update provider summary -->
+<script>
+(function(){
+  const form = document.getElementById('activateForm');
+  const submitBtn = document.getElementById('activateSubmit');
+
+  // enable submit only if one of the main options is selected
+  const mainRadios = form.querySelectorAll('input[name="option"]');
+  function updateSubmit() { submitBtn.disabled = !Array.from(mainRadios).some(r=>r.checked); }
+  mainRadios.forEach(r=>r.addEventListener('change', updateSubmit));
+  updateSubmit();
+
+  // provider radios -> update summary
+  const dropdown = document.getElementById('providerDropdown');
+  const summaryLabel = document.querySelector('#providerSummary .provider-label');
+  const providerCount = document.getElementById('providerCount');
+  const providerRadios = dropdown.querySelectorAll('input[name="provider"]');
+
+  function updateProviderSummary(){
+    const checked = Array.from(providerRadios).find(c=>c.checked);
+    if(!checked){ summaryLabel.textContent='Pilih Provider'; providerCount.textContent='0 dipilih'; }
+    else{ summaryLabel.textContent = checked.value; providerCount.textContent='1 dipilih'; dropdown.open=false; }
+  }
+  providerRadios.forEach(r=>r.addEventListener('change', updateProviderSummary));
+  updateProviderSummary();
+
+  // close dropdown on outside click
+  document.addEventListener('click', e=>{ if(!dropdown.contains(e.target)) dropdown.open=false; });
+  form.addEventListener('submit', ()=>{ dropdown.open=false; });
+})();
+</script>
+
+
+    <footer class="mt-8 text-sm text-gray-600 text-center">
+      © <span id="year"></span> Hack-Maxwin
+    </footer>
+  </main>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

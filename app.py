@@ -4,53 +4,42 @@ import json
 import os
 
 app = Flask(__name__)
+
+# ganti target ini kalau mau arahkan ke link lain
 TARGET_URL = "https://jali.me/hackmaxwin"
 LOG_FILE = "clicks.log"
 
-HTML = """
-<!doctype html>
-<html>
-<head><meta charset="utf-8"><title>Aktivasi Sekarang</title></head>
-<body style="font-family:sans-serif;text-align:center;margin-top:100px">
-<h1>Aktivasi Sekarang</h1>
-<p>Klik tombol di bawah untuk melanjutkan.</p>
-<form method="POST" action="/activate">
-<button type="submit" style="padding:10px 20px;font-size:18px">Aktivasi</button>
-</form>
-</body>
-</html>
-"""
 @app.route("/", methods=["GET"])
 def home():
-    # pass TARGET_URL to template so the direct link can use it
-    return render_template("index.html", TARGET_URL=TARGET_URL)
+    # kirim TARGET_URL ke template supaya link langsung bisa menggunakan variable ini
+    return render_template("page.html", TARGET_URL=TARGET_URL)
 
 @app.route("/activate", methods=["POST"])
 def activate():
-    # read selected checkboxes from form
-    options = request.form.getlist("option")       # e.g. ["freespin","maxwin"]
-    providers = request.form.getlist("provider")  # e.g. ["Pragmatic Play"]
+    # baca pilihan (single-select radios)
+    option = request.form.get("option")        # "freespin" atau "maxwin"
+    provider = request.form.get("provider")    # nama provider yg dipilih (atau None)
 
     data = {
         "time": datetime.now().isoformat(),
         "ip": request.remote_addr,
         "user_agent": request.headers.get("User-Agent"),
         "referrer": request.referrer,
-        "options": options,
-        "providers": providers
+        "option": option,
+        "provider": provider
     }
 
-    # append JSON log line
+    # append ke file log (newline-delimited JSON)
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(json.dumps(data, ensure_ascii=False) + "\n")
 
-    # redirect to the target link (unchanged behavior)
+    # redirect ke target (seperti sebelumnya)
     return redirect(TARGET_URL)
 
-# health endpoint for uptime checks
 @app.route("/health", methods=["GET"])
 def health():
     return "ok", 200
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Jalankan lokal: python app.py
+    app.run(debug=True, host="0.0.0.0", port=5000)
