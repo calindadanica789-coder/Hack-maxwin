@@ -19,10 +19,9 @@ HTML = """
 </body>
 </html>
 """
-
-@app.route("/")
+@app.route("/", methods=["GET"])
 def home():
-    return HTML
+    return render_template("index.html")
 
 @app.route("/activate", methods=["POST"])
 def activate():

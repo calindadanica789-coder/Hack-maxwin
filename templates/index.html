@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hack-Maxwin — Aktivasi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:#f8fafc; }
+    .hero-bg { background: linear-gradient(135deg,#0f172a 0%,#1e293b 60%); color: white; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <header class="hero-bg py-6">
+    <div class="max-w-4xl mx-auto px-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="bg-white/10 p-2 rounded">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v4a1 1 0 001 1h3"></path></svg>
+        </div>
+        <div>
+          <div class="text-lg font-semibold">Hack-Maxwin</div>
+          <div class="text-sm text-white/80">Alat aktivasi cepat</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 -mt-12">
+    <section class="bg-white rounded-2xl shadow-lg p-8">
+      <div class="md:flex md:items-center md:gap-8">
+        <div class="md:flex-1">
+          <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-3">Aktivasi Sekarang — Cepat & Aman</h1>
+          <p class="text-gray-600 mb-6">Klik tombol di bawah untuk melanjutkan.</p>
+
+          <form method="POST" action="/activate" class="inline-block">
+            <button type="submit" class="inline-flex items-center gap-2 px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium shadow">
+              🚀 Aktivasi Sekarang
+            </button>
+          </form>
+
+          <div class="mt-6 text-sm text-gray-500">Redirect ke target yang dikonfigurasi.</div>
+        </div>
+
+        <div class="mt-6 md:mt-0 md:w-56">
+          <div class="bg-gradient-to-tr from-indigo-50 to-white border rounded-lg p-4 text-center">
+            <div class="text-xs text-gray-500">Statistik</div>
+            <div class="text-2xl font-bold text-indigo-600 mt-2">—</div>
+            <div class="text-xs text-gray-500">klik</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-8 text-sm text-gray-600 text-center">
+      © <span id="year"></span> Hack-Maxwin
+    </footer>
+  </main>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
