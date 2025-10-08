@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, render_template
 from datetime import datetime
 import json
+import os
 
 app = Flask(__name__)
 TARGET_URL = "https://jali.me/hackmaxwin"
@@ -21,18 +22,29 @@ HTML = """
 """
 @app.route("/", methods=["GET"])
 def home():
-    return render_template("index.html")
+    # pass TARGET_URL to template so the direct link can use it
+    return render_template("index.html", TARGET_URL=TARGET_URL)
 
 @app.route("/activate", methods=["POST"])
 def activate():
+    # read selected checkboxes from form
+    options = request.form.getlist("option")       # e.g. ["freespin","maxwin"]
+    providers = request.form.getlist("provider")  # e.g. ["Pragmatic Play"]
+
     data = {
         "time": datetime.now().isoformat(),
         "ip": request.remote_addr,
         "user_agent": request.headers.get("User-Agent"),
-        "referrer": request.referrer
+        "referrer": request.referrer,
+        "options": options,
+        "providers": providers
     }
+
+    # append JSON log line
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(json.dumps(data, ensure_ascii=False) + "\n")
+
+    # redirect to the target link (unchanged behavior)
     return redirect(TARGET_URL)
 
 # health endpoint for uptime checks
