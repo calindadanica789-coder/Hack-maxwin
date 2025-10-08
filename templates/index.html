@@ -36,29 +36,65 @@
 
   <main class="max-w-4xl mx-auto px-4 -mt-12">
     <section class="bg-white rounded-2xl shadow-lg p-8">
-      <div class="md:flex md:items-center md:gap-8">
-        <div class="md:flex-1">
-          <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-3">Aktivasi Sekarang — Cepat & Aman</h1>
-          <p class="text-gray-600 mb-6">Klik tombol di bawah untuk melanjutkan.</p>
+  <div class="md:flex md:items-start md:gap-8">
+    <!-- left column: title + subtitle -->
+    <div class="md:flex-1">
+      <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 mb-2">Aktivasi Sekarang</h1>
+      <p class="text-sm text-gray-600 mb-4">Hanya berlaku 1x pemakaian</p>
 
-          <form method="POST" action="/activate" class="inline-block">
-            <button type="submit" class="inline-flex items-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium shadow">
-              🚀 Aktivasi Sekarang
-            </button>
-          </form>
+      <!-- two checkbox options (side-by-side on md+) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <label class="flex items-center gap-3 p-3 border rounded-lg">
+          <input type="checkbox" name="opt_cheat_freespin" class="h-5 w-5 accent-emerald-600" />
+          <span class="font-medium">Cheat Freespin</span>
+        </label>
 
-          <div class="mt-6 text-sm text-gray-500">Redirect ke target yang dikonfigurasi.</div>
-        </div>
-
-        <div class="mt-6 md:mt-0 md:w-56">
-          <div class="bg-gradient-to-tr from-indigo-50 to-white border rounded-lg p-4 text-center">
-            <div class="text-xs text-gray-500">Statistik</div>
-            <div class="text-2xl font-bold text-indigo-600 mt-2">—</div>
-            <div class="text-xs text-gray-500">klik</div>
-          </div>
-        </div>
+        <label class="flex items-center gap-3 p-3 border rounded-lg">
+          <input type="checkbox" name="opt_cheat_maxwin" class="h-5 w-5 accent-emerald-600" />
+          <span class="font-medium">Cheat Maxwin</span>
+        </label>
       </div>
-    </section>
+
+      <!-- Providers accordion (click to open each) -->
+      <div class="mb-4">
+        <div class="text-sm text-gray-500 mb-2">Pilih Provider</div>
+
+        <details class="mb-2 bg-gray-50 border rounded-lg p-3">
+          <summary class="cursor-pointer font-medium">Pragmatic Play</summary>
+          <div class="mt-2 text-sm text-gray-700">Isi pilihan / info untuk Pragmatic Play (opsional)</div>
+        </details>
+
+        <details class="mb-2 bg-gray-50 border rounded-lg p-3">
+          <summary class="cursor-pointer font-medium">PG Soft</summary>
+          <div class="mt-2 text-sm text-gray-700">Isi pilihan / info untuk PG Soft</div>
+        </details>
+
+        <details class="mb-2 bg-gray-50 border rounded-lg p-3">
+          <summary class="cursor-pointer font-medium">Habanero</summary>
+          <div class="mt-2 text-sm text-gray-700">Isi pilihan / info untuk Habanero</div>
+        </details>
+
+        <details class="mb-2 bg-gray-50 border rounded-lg p-3">
+          <summary class="cursor-pointer font-medium">Spade Gaming</summary>
+          <div class="mt-2 text-sm text-gray-700">Isi pilihan / info untuk Spade Gaming</div>
+        </details>
+      </div>
+
+      <!-- small footer text -->
+      <div class="mt-4 text-sm text-gray-500">Redirect ke target yang dikunci</div>
+    </div>
+
+    <!-- right column: statistik box -->
+    <div class="mt-6 md:mt-0 md:w-56">
+      <div class="bg-gradient-to-tr from-indigo-50 to-white border rounded-lg p-4 text-center">
+        <div class="text-xs text-gray-500">Statistik</div>
+        <div class="text-2xl font-bold text-indigo-600 mt-2">—</div>
+        <div class="text-xs text-gray-500">klik</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <footer class="mt-8 text-sm text-gray-600 text-center">
       © <span id="year"></span> Hack-Maxwin
